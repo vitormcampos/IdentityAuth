@@ -6,3 +6,5 @@ riderModule.iml
 /.idea/.idea.IdentityAuth/.idea/
 /Migrations
 /local.db
+/local.db-shm
+/local.db-wal

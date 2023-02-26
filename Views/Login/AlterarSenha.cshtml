@@ -1,0 +1,24 @@
+@model AlterarSenhaViewModel
+
+@{
+    ViewBag.Title = "Alterar senha";
+    Layout = "_Layout";
+}
+<form asp-action="AlterarSenha">
+    <div class="mb-3">
+        <label asp-for="SenhaAtual" class="form-label"></label>
+        <input asp-for="SenhaAtual" type="password" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="NovaSenha" class="form-label"></label>
+        <input asp-for="NovaSenha" type="password" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="ConfirmarNovaSenha" class="form-label"></label>
+        <input asp-for="ConfirmarNovaSenha" type="password" class="form-control">
+    </div>
+
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </div>
+</form>

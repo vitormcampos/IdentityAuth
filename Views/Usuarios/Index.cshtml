@@ -1,0 +1,68 @@
+@model IEnumerable<ListagemUsuarioViewModel>
+
+@{
+    ViewBag.Title = "Usuários";
+    Layout = "_Layout";
+}
+
+<a asp-controller="Usuarios" asp-action="Adicionar" class="btn btn-success">
+    Novo
+</a>
+
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(u => u.UserName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(u => u.Email)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(u => u.Telefone)
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <th>
+                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                        @if (User.Identity.Name == usuario.UserName)
+                        {
+                            <a asp-controller="Login" asp-action="AlterarSenha"
+                               type="button" class="btn btn-primary">
+                                Alterar senha
+                            </a>
+                        }
+                        <a asp-controller="Usuarios" asp-action="Editar" asp-route-id="@usuario.Id"
+                           type="button" class="btn btn-warning">
+                            Editar
+                        </a>
+                        <a asp-controller="Usuarios" asp-action="Excluir" asp-route-id="@usuario.Id"
+                           type="button" class="btn btn-danger"
+                           onclick="return confirm('Essa ação não poderá ser desfeita')">
+                            Remover
+                        </a>
+                    </div>
+                </th>
+                <th>
+                    @usuario.UserName
+                    @if (User.Identity.Name == usuario.UserName)
+                    {
+                        <span class="badge bg-success">Atual</span>
+                    }
+                </th>
+                <th>@usuario.Email</th>
+                <th>@usuario.Telefone</th>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,24 @@
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Entrar";
+    Layout = "_Layout";
+}
+
+<form asp-action="Login">
+    <div class="mb-3">
+      <label asp-for="UserName" class="form-label"></label>
+      <input asp-for="UserName" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Senha" class="form-label"></label>
+        <input type="password" asp-for="Senha" class="form-control">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" asp-for="PersistirLogin" class="form-check-input">
+        <label class="form-check-label" asp-for="PersistirLogin"></label>
+      </div>
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </div>
+</form>
